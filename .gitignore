@@ -2,3 +2,5 @@ __pycache__/*
 __pycache__
 .vscode/*
 .vscode
+cache_response.sqlite
+http_cache.sqlite

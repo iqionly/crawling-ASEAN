@@ -1,2 +1,5 @@
 formatType = 'format=json'
 country = 'id'
+WBcountryASEAN = 'PHL;MYS;KHM;IDN;VNM;SGP;LAO;BRN;THA;MMR;TLS'
+header_accept_ilo_dataset = 'application/vnd.sdmx.data+json;version=1.0.0-wd'
+header_accept_ilo_metadata = 'application/vnd.sdmx.structure+json;version=1.0'
