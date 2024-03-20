@@ -1,4 +1,7 @@
 # from scripts import worldbank_indicator_scraper, worldbank_sources_scraper, 
+from scripts import ilostat_indicator_scraper
+from scripts import worldbank_indicator_scraper, worldbank_sources_scraper
+from scripts.models import worldbank_models
 from configs import urls
 from sys import argv
 parameter = argv[1]
@@ -24,12 +27,9 @@ parameter = argv[1]
 def my_function(param):
   
     if(param == 'ilo'):
-        from scripts import ilostat_indicator_scraper
         ilo = ilostat_indicator_scraper.engine()
         ilo.getIndicatorData()
     else:
-        from scripts import worldbank_indicator_scraper, worldbank_sources_scraper
-        from scripts.models import worldbank_models
         worldbank_models.getMetaIndicators()
 
         wbi = worldbank_indicator_scraper.engine('urlCI', single=True)
