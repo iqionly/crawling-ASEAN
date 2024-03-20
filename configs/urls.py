@@ -1,5 +1,5 @@
 wbHost = 'http://api.worldbank.org/v2'
-iloHost = 'https://www.ilo.org/sdmx-test/rest'
+iloHost = 'https://www.ilo.org/sdmx/rest'
 schemeType = '/ILO'
 iloListIndicatorPath = iloHost + '/codelist/ILO/CL_INDICATOR'
 iloIndicatorPath = (iloHost + '/data' + schemeType) + ",{indicator}/{filter}"
