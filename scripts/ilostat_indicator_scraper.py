@@ -1,6 +1,8 @@
+
 from datetime import datetime
 
 import logging
+
 
 import requests
 
@@ -939,13 +941,25 @@ class engine:
                     continue
                 # get dimension data
                 dimension = ''
+
+                
                 for q in range(4, len(message.structure.dimensions.components)):
                     dimension += message.structure.dimensions.components[q].id + ';'
                 dimension = dimension.rstrip(';')
                 data = message.to_pandas()
                 # print(data)
+                
                 query = 'REPLACE INTO ' + table + ' (indicator_id, country_id, frequency_id, measure_id, dimensions, dimensions_id, time_periode, value, created_at, updated_at) VALUES '
                 for key, row in data.items():
+                    get_value = ''
+                    nilai_indikator = ''
+                    contoh = 0.0
+                    get_value = str(row).replace("'", "\\'")
+                    if(str(row).replace("'", "\\'") == 'nan'):
+                        nilai_indikator  = str(contoh).replace("'", "\\'")
+                    else:
+                        nilai_indikator  = get_value
+
                     query += '('
                     query += '\''+ indicate +'\', '
                     query += '\''+ key[0] +'\', '
@@ -957,7 +971,7 @@ class engine:
                         dimensions_id += '\"'+ key[p] +'\",'
                     query += '\''+ dimensions_id.rstrip(',') +'}\', '
                     query += '\''+ key[len(key)-1] +'\', '
-                    query += '\''+ str(row).replace("'", "\\'") +'\', '
+                    query += '\''+ nilai_indikator  +'\', '
                     query += '\'' + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '\', '
                     query += '\'' + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '\'), '
                 database.cursor.execute(query.rstrip(', '))
