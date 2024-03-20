@@ -32,20 +32,17 @@ def my_function(param):
         from scripts.models import worldbank_models
         worldbank_models.getMetaIndicators()
 
+        wbi = worldbank_indicator_scraper.engine('urlCI', single=True)
+        wbi.scrapIndicatorsAutoAllPages()
+        wbi.scrapCountryAutoAllPages()
 
-        #worldbank_models.done()
+        for i in range(1,31):
+         wbi = worldbank_indicator_scraper.engine(urls.wbHost + '/source/2/indicators?format=json&page=' + str(i), page=i, single=True)
+         wbi.save2Database('wb_indicators')
+         wbi.save2MetaDatabase()
 
-        #wbi = worldbank_indicator_scraper.engine('urlCI', single=True)
-        #wbi.scrapIndicatorsAutoAllPages()
-        #wbi.scrapCountryAutoAllPages()
 
-
-        #for i in range(1,31):
-        # wbi = worldbank_indicator_scraper.engine(urls.wbHost + '/source/2/indicators?format=json&page=' + str(i), page=i, single=True)
-        # wbi.save2Database('wb_indicators')
-        # wbi.save2MetaDatabase()
-
-my_function(parameter = "")
+my_function(parameter)
 
 # worldbank_models.getMetaIndicators()
 # worldbank_models.done()
