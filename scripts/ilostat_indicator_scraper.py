@@ -477,10 +477,6 @@ class engine:
                 for q in range(4, len(message.structure.dimensions.components)):
                     dimension += message.structure.dimensions.components[q].id + ';'
                     dimension = dimension.rstrip(';')
-
-
-                print(message)
-                print('ini message')
                 
 
                 data   = message.to_pandas() 
